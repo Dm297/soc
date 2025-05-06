@@ -1,5 +1,6 @@
 
 package uu.app.user.service.service;
+import org.springframework.transaction.annotation.Transactional;
 
 import uu.app.user.service.entity.UserEntity;
 import uu.app.user.service.repository.UserRepository;
@@ -28,6 +29,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    @Transactional
     public UserEntity updateUser(Long id, UserEntity updatedUser) {
         return userRepository.findById(id).map(user -> {
             user.setName(updatedUser.getName());
