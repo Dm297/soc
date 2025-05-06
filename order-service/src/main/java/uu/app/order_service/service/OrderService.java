@@ -17,8 +17,8 @@ public class OrderService {
         this.userClient = userClient;
     }
 
-    public OrderEntity createOrder(OrderEntity order) {
-        UserDTO user = userClient.getUser(order.getUserId());
+    public OrderEntity createOrder(OrderEntity order, String token) {
+        UserDTO user = userClient.getUser(order.getUserId(), token);
         if (user == null) {
             throw new RuntimeException("User not found");
         }

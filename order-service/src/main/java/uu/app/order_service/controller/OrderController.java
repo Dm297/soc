@@ -14,7 +14,9 @@ public class OrderController {
         this.orderService = orderService;
     }
     @PostMapping
-    public OrderEntity createOrder(@RequestBody OrderEntity order) {
-        return orderService.createOrder(order);
+    public OrderEntity createOrder(@RequestHeader("Authorization") String authorizationHeader,
+                                   @RequestBody OrderEntity order) {
+
+        return orderService.createOrder(order, authorizationHeader);
     }
 }
